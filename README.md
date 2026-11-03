@@ -34,3 +34,17 @@ Bonjour !
 ```
 
 <img src="img/sigilBrume.png" height="300px"/>
+
+## À faire
+- Sigils : 
+  - [ ] Corps
+  - [ ] Force
+  - [ ] Cycle perpétuel
+- Ergonomie :
+  - [ ] Outil CLI
+  - [ ] Méthode d'utilisation simple pour les non-initiés à python 😰😰😰
+- Fonctionnalités :
+  - [ ] Options d'export
+  - [ ] Entrée par fichier
+    - [ ] Format de fichier compréhensible
+    - [ ] Possibilité de générer plusieurs sigils et de les exporter en masse
