@@ -1,0 +1,35 @@
+{
+  "arcanums": {
+    "augmenter": {
+      "dessin": [
+        {
+          "type": "lines",
+          "coords": [
+            [0.5, 0.5],
+            [0, -0.5],
+            [-0.5, 0.5]
+          ]
+        }
+      ],
+      "suite": {
+        "x": 0,
+        "y": 0,
+        "taille": 0.5
+      }
+    }
+  },
+  "alias": {
+    "changer vers": "vers",
+    "pureté": "purifier",
+    "liquide": "eau",
+    "chaleur": "feu",
+    "immobilité": "terre",
+    "vitesse": "air",
+    "solidité": "résistance",
+    "diminuer": "réduire",
+    "fertilité": "végétal",
+    "athanor": "lichen",
+    "densité": "masse",
+    "séparer de": "diviser"
+  }
+}
