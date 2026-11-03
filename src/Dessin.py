@@ -129,10 +129,10 @@ cercleLichen = Cercle("lichen - vers - mort", ContraintePlace.AUCUNE)
 
 sigilFeu = Sigil("3 * terre - augmenter - chaleur / 3 * air - augmenter - chaleur / 3 * eau - augmenter - chaleur")
 sigilLapis = Sigil("métal - augmenter - masse ; métal - diminuer - taille")
-sigilBrume = Sigil("3 * liquide - augmenter - chaleur / 2 * air - augmenter - froid ; air - augmenter - taille")
+sigilBrume = Sigil("3*liquide-augmenter-chaleur/2*air-augmenter-FROID;air-augmenter-taille")
 
 #d.append(draw.Use(draw_strophe(strophe, 95, encercler=False), 0, 0))
 #d.append(draw.Use(draw_cercle(cercleLapis, 95, 95), 0, 0))
-d.append(draw.Use(draw_sigil(sigilBrume, 100), 0, 0))
+d.append(draw.Use(draw_sigil(sigilLapis, 100), 0, 0))
 d.set_pixel_scale(16)
 d.save_png("output/sigil.png")

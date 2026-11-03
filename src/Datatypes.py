@@ -36,7 +36,7 @@ class Strophe:
     nb_arcanums: int
     arcanums: list[Arcanum]
     def __init__(self, strophe:str) -> None:
-        arcstrings = strophe.strip().lower().split(" - ")
+        arcstrings = [a.strip() for a in strophe.lower().split("-")]
         self.nb_arcanums = len(arcstrings)
         if self.nb_arcanums > 3:
             raise StropheTropLongueError(strophe, self.nb_arcanums)
@@ -57,11 +57,11 @@ class Cercle:
     cercle: str
     contrainte: ContraintePlace
     def __init__(self, cercle: str, contrainte_sup: ContraintePlace) -> None:
-        stpstrings = cercle.lower().strip().split(" ; ")
+        stpstrings = [s.strip() for s in cercle.lower().split(";")]
         # Gestion des multiples, pour pas avoir à taper la même strophe 3 fois
         for i in range(len(stpstrings)):
-            if " * " in stpstrings[i]:
-                stp = stpstrings[i].split(" * ")
+            if "*" in stpstrings[i]:
+                stp = [s.strip() for s in stpstrings[i].split("*")]
                 stpstrings.pop(i)
                 for j in range(int(stp[0])):
                     stpstrings.insert(i, stp[1])
@@ -93,7 +93,7 @@ class Sigil:
     cercles: list[Cercle]
     sigil: str
     def __init__(self, sigil: str) -> None:
-        cclstrings = sigil.lower().strip().split(" / ")
+        cclstrings = [c.strip() for c in sigil.lower().split("/")]
         self.nb_cercles = len(cclstrings)
         if self.nb_cercles > 3:
             raise SigilTropGrandError(sigil, self.nb_cercles)
