@@ -122,7 +122,7 @@ def draw_sigil(sigil: Sigil, size: int) -> draw.Group:
         ccl_size = int(ccl_size - 0.3 * size)
     return g
 
-strophe = Strophe("eau - diviser - métal")
+strophe = Strophe("sigil - augmenter - vitesse")
 cercleFeu = Cercle("eau - augmenter - chaleur ; terre - augmenter - chaleur ; air - augmenter - chaleur", ContraintePlace.AUCUNE)
 cercleLapis = Cercle("métal - diminuer - taille ; métal - augmenter - masse", ContraintePlace.AUCUNE)
 cercleLichen = Cercle("lichen - vers - mort", ContraintePlace.AUCUNE)
@@ -130,9 +130,10 @@ cercleLichen = Cercle("lichen - vers - mort", ContraintePlace.AUCUNE)
 sigilFeu = Sigil("3 * terre - augmenter - chaleur / 3 * air - augmenter - chaleur / 3 * eau - augmenter - chaleur")
 sigilLapis = Sigil("métal - augmenter - masse ; métal - diminuer - taille")
 sigilBrume = Sigil("3*liquide-augmenter-chaleur/2*air-augmenter-FROID;air-augmenter-taille")
+sigilSigil = Sigil("3 * sigil - diminuer - résistance / 3 * sigil - augmenter - vitesse")
 
-#d.append(draw.Use(draw_strophe(strophe, 95, encercler=False), 0, 0))
+d.append(draw.Use(draw_strophe(strophe, 95, encercler=False, stroke_width=5), 0, 0))
 #d.append(draw.Use(draw_cercle(cercleLapis, 95, 95), 0, 0))
-d.append(draw.Use(draw_sigil(sigilLapis, 100), 0, 0))
+#d.append(draw.Use(draw_sigil(sigilSigil, 100), 0, 0))
 d.set_pixel_scale(16)
 d.save_png("output/sigil.png")
