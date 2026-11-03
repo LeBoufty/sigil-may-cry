@@ -3,6 +3,7 @@ import logging
 import drawsvg as draw
 
 from Datatypes import Arcanum, Strophe
+from src.Exceptions import FormeInconnueError
 
 d = draw.Drawing(100, 100, origin="center")
 logger = logging.getLogger(__name__)
@@ -46,15 +47,17 @@ def draw_arcanum(arc: Arcanum, size: int) -> draw.Group:
         if forme == "lines":
             coords = dsn["coords"]
             g.append(draw_lines(coords, size))
-        if forme == "circle":
+        elif forme == "circle":
             x, y, r, fill = dsn["x"], dsn["y"], dsn["r"], dsn["fill"]
             g.append(draw_circle(x, y, r, fill, size))
-        if forme == "arc":
+        elif forme == "arc":
             x, y, r, angle1, angle2 = dsn["x"], dsn["y"], dsn["r"], dsn["angles"][0], dsn["angles"][1]
             g.append(draw_arc(x, y, r, angle1, angle2, size))
-        if forme == "curve":
+        elif forme == "curve":
             coords = dsn["coords"]
             g.append(draw_curve(coords, size))
+        else:
+            raise FormeInconnueError(forme)
     return g
 
 def draw_strophe(stp: Strophe, size: int, encercler=False) -> draw.Group:
