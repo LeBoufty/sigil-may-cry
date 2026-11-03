@@ -1,7 +1,15 @@
 import json
 from enum import Enum
 
-from Exceptions import ArcanumNotFoundError, CercleTropGrandError, CercleVideError, SigilTropGrandError, SigilVideError, StropheTropLongueError, StropheVideError
+from Exceptions import (
+    ArcanumNotFoundError,
+    CercleTropGrandError,
+    CercleVideError,
+    SigilTropGrandError,
+    SigilVideError,
+    StropheTropLongueError,
+    StropheVideError,
+)
 
 with open("src/arcanums.json") as arc:
     ARCANUMS = json.load(arc)
