@@ -58,6 +58,13 @@ class Cercle:
     contrainte: ContraintePlace
     def __init__(self, cercle: str, contrainte_sup: ContraintePlace) -> None:
         stpstrings = cercle.lower().strip().split(" ; ")
+        # Gestion des multiples, pour pas avoir à taper la même strophe 3 fois
+        for i in range(len(stpstrings)):
+            if " * " in stpstrings[i]:
+                stp = stpstrings[i].split(" * ")
+                stpstrings.pop(i)
+                for j in range(int(stp[0])):
+                    stpstrings.insert(i, stp[1])
         self.nb_strophes = len(stpstrings)
         if self.nb_strophes > 3:
             raise CercleTropGrandError(cercle, self.nb_strophes)
