@@ -102,7 +102,7 @@ def agencement(taille_cercle: int, contrainte: ContraintePlace) -> str:
         if contrainte == ContraintePlace.BAS: return "triangle_bas"
         else: return "triangle_haut"
 
-def draw_cercle(ccl: Cercle, size: int, max_size: int, ligne=1) -> draw.Group:
+def draw_cercle(ccl: Cercle, size: int, max_size: int) -> draw.Group:
     g = draw.Group()
     agcm = AGENCEMENTS[agencement(ccl.nb_strophes, ccl.contrainte)]
     coords = agcm["coords"]
@@ -116,12 +116,10 @@ def draw_cercle(ccl: Cercle, size: int, max_size: int, ligne=1) -> draw.Group:
 
 def draw_sigil(sigil: Sigil, size: int) -> draw.Group:
     g = draw.Group()
-    ccl_size = size
-    ligne = 1
+    ccl_size = int((1/3) * sigil.nb_cercles * size)
     for ccl in sigil.cercles:
-        g.append(draw.Use(draw_cercle(ccl, ccl_size, size, ligne=ligne), 0, 0))
+        g.append(draw.Use(draw_cercle(ccl, ccl_size, size), 0, 0))
         ccl_size = int(ccl_size - 0.3 * size)
-        ligne += 1
     return g
 
 strophe = Strophe("eau - diviser - métal")
@@ -130,10 +128,11 @@ cercleLapis = Cercle("métal - diminuer - taille ; métal - augmenter - masse", 
 cercleLichen = Cercle("lichen - vers - mort", ContraintePlace.AUCUNE)
 
 sigilFeu = Sigil("terre - augmenter - chaleur ; terre - augmenter - chaleur ; terre - augmenter - chaleur / air - augmenter - chaleur ; air - augmenter - chaleur ; air - augmenter - chaleur / eau - augmenter - chaleur ; eau - augmenter - chaleur ; eau - augmenter - chaleur")
-sigilLapis = Sigil("métal - diminuer - taille ; métal - augmenter - masse / métal - diminuer - taille ; métal - augmenter - masse / métal - diminuer - taille ; métal - augmenter - masse")
+sigilLapis = Sigil("métal - augmenter - masse ; métal - diminuer - taille")
+sigilBrume = Sigil("liquide - augmenter - chaleur ; liquide - augmenter - chaleur ; liquide - augmenter - chaleur / air - augmenter - froid ; air - augmenter - froid ; air - augmenter - taille")
 
 #d.append(draw.Use(draw_strophe(strophe, 95, encercler=False), 0, 0))
 #d.append(draw.Use(draw_cercle(cercleLapis, 95, 95), 0, 0))
-d.append(draw.Use(draw_sigil(sigilFeu, 100), 0, 0))
+d.append(draw.Use(draw_sigil(sigilBrume, 100), 0, 0))
 d.set_pixel_scale(16)
 d.save_png("output/sigil.png")
