@@ -1,6 +1,6 @@
 import json
 
-from Exceptions import ArcanumNotFoundError
+from Exceptions import ArcanumNotFoundError, StropheTropLongueError, StropheVideError
 
 with open("src/arcanums.json") as arc:
     ARCANUMS = json.load(arc)
@@ -27,12 +27,22 @@ class Arcanum:
             raise ArcanumNotFoundError(nom)
         arc_data = dict(ARCANUMS["arcanums"][self.nom])
         self.dessin = arc_data["dessin"]
-        self.suite = arc_data["suite"]
+        suitedict = arc_data["suite"]
+        self.suite = Suite(suitedict["x"], suitedict["y"], suitedict["taille"])
 
 class Strophe:
+    strophe: str
     nb_arcanums: int
-    def __init__(self) -> None:
-        pass
+    arcanums: list[Arcanum]
+    def __init__(self, strophe:str) -> None:
+        arcstrings = strophe.strip().lower().split(" - ")
+        self.nb_arcanums = len(arcstrings)
+        if self.nb_arcanums > 3:
+            raise StropheTropLongueError(strophe, self.nb_arcanums)
+        elif self.nb_arcanums == 0:
+            raise StropheVideError
+        self.arcanums = [Arcanum(a) for a in arcstrings]
+        self.strophe = strophe
 
 class Cercle:
     nb_strophes: int
