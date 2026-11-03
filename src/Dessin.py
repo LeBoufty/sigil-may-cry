@@ -23,6 +23,21 @@ def draw_circle(x: float, y: float, r: float, fill: str, size: int) -> draw.Grou
     g.append(draw.Circle(x, y, r, fill=fill, stroke="black"))
     return g
 
+def draw_arc(x: float, y: float, r: float, angle1: int, angle2: int, size: int) -> draw.Group:
+    g = draw.Group()
+    x, y, r = x * size, y*size, r*size
+    g.append(draw.Arc(x, y, r, angle1, angle2, fill="transparent", stroke="black"))
+    return g
+
+def draw_curve(coords: list, size: int) -> draw.Group:
+    g = draw.Group()
+    p = draw.Path(stroke="black", fill="transparent")
+    sx, sy, c1x, c1y, c2x, c2y, ex, ey = tuple([c*size for c in coords])
+    p.M(sx, sy)
+    p.C(c1x, c1y, c2x, c2y, ex, ey)
+    g.append(p)
+    return g
+
 ### FONCTIONS DE DESSIN D'OBJETS / SIGILS
 def draw_arcanum(arc: Arcanum, size: int) -> draw.Group:
     g = draw.Group()
@@ -34,11 +49,20 @@ def draw_arcanum(arc: Arcanum, size: int) -> draw.Group:
         if forme == "circle":
             x, y, r, fill = dsn["x"], dsn["y"], dsn["r"], dsn["fill"]
             g.append(draw_circle(x, y, r, fill, size))
+        if forme == "arc":
+            x, y, r, angle1, angle2 = dsn["x"], dsn["y"], dsn["r"], dsn["angles"][0], dsn["angles"][1]
+            g.append(draw_arc(x, y, r, angle1, angle2, size))
+        if forme == "curve":
+            coords = dsn["coords"]
+            g.append(draw_curve(coords, size))
     return g
 
-def draw_strophe(stp: Strophe, size: int) -> draw.Group:
+def draw_strophe(stp: Strophe, size: int, encercler=False) -> draw.Group:
     g = draw.Group()
     x, y = 0, 0
+    if encercler:
+        g.append(draw.Circle(0, 0, 0.5*size, fill="transparent", stroke="black"))
+        size = int(size*0.67)
     for arc in stp.arcanums:
         g.append(draw.Use(draw_arcanum(arc, size), x, y))
         suite = arc.suite
@@ -47,8 +71,8 @@ def draw_strophe(stp: Strophe, size: int) -> draw.Group:
         y = int(y + suite.y * size)
     return g
 
-strophe = Strophe("terre - augmenter - chaleur")
+strophe = Strophe("lichen - vers - mort")
 
-d.append(draw.Use(draw_strophe(strophe, 95), 0, 0))
+d.append(draw.Use(draw_strophe(strophe, 95, encercler=False), 0, 0))
 d.set_pixel_scale(8)
 d.save_png("output/sigil.png")
