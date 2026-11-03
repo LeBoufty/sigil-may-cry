@@ -3,7 +3,7 @@ import logging
 import drawsvg as draw
 
 from Datatypes import Arcanum, Strophe
-from src.Exceptions import FormeInconnueError
+from Exceptions import FormeInconnueError
 
 d = draw.Drawing(100, 100, origin="center")
 logger = logging.getLogger(__name__)
@@ -74,7 +74,7 @@ def draw_strophe(stp: Strophe, size: int, encercler=False) -> draw.Group:
         y = int(y + suite.y * size)
     return g
 
-strophe = Strophe("lichen - vers - mort")
+strophe = Strophe("eau - diviser - métal")
 
 d.append(draw.Use(draw_strophe(strophe, 95, encercler=False), 0, 0))
 d.set_pixel_scale(8)
