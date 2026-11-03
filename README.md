@@ -33,4 +33,4 @@ Bonjour !
 3 * liquide - augmenter - chaleur / 2 * air - augmenter - froid ; air - augmenter - taille
 ```
 
-<img src="img/sigilBrume.png" heignt="100px"/>
+<img src="img/sigilBrume.png" height="300px"/>
