@@ -1,6 +1,7 @@
 import json
+from enum import Enum
 
-from Exceptions import ArcanumNotFoundError, StropheTropLongueError, StropheVideError
+from Exceptions import ArcanumNotFoundError, CercleTropGrandError, CercleVideError, SigilTropGrandError, SigilVideError, StropheTropLongueError, StropheVideError
 
 with open("src/arcanums.json") as arc:
     ARCANUMS = json.load(arc)
@@ -44,14 +45,57 @@ class Strophe:
         self.arcanums = [Arcanum(a) for a in arcstrings]
         self.strophe = strophe
 
+class ContraintePlace(Enum):
+    AUCUNE = 0
+    HAUT = 1
+    BAS = 2
+    COTES = 3
+
 class Cercle:
     nb_strophes: int
     strophes: list[Strophe]
-    def __init__(self) -> None:
-        pass
+    cercle: str
+    contrainte: ContraintePlace
+    def __init__(self, cercle: str, contrainte_sup: ContraintePlace) -> None:
+        stpstrings = cercle.lower().strip().split(" ; ")
+        self.nb_strophes = len(stpstrings)
+        if self.nb_strophes > 3:
+            raise CercleTropGrandError(cercle, self.nb_strophes)
+        elif self.nb_strophes == 0:
+            raise CercleVideError
+        # Attribution des contraintes.
+        # Cela permet aux cercles de pas se chevaucher
+        # Ici, s'il n'y a qu'un tercet, il est en haut s'il en a la place
+        # et s'il y en a 3 la "pointe" du triangle sera à l'opposée de la précédente
+        elif self.nb_strophes != 2:
+            if contrainte_sup == ContraintePlace.HAUT:
+                self.contrainte = ContraintePlace.BAS
+            else:
+                self.contrainte = ContraintePlace.HAUT
+        else:
+            if contrainte_sup == ContraintePlace.COTES:
+                # Manière dégueu de dire qu'il est à la verticale
+                self.contrainte = ContraintePlace.BAS
+            else:
+                self.contrainte = ContraintePlace.COTES
+        self.strophes = [Strophe(stp) for stp in stpstrings]
+        self.cercle = cercle
 
 class Sigil:
     nb_cercles: int
     cercles: list[Cercle]
-    def __init__(self) -> None:
-        pass
+    sigil: str
+    def __init__(self, sigil: str) -> None:
+        cclstrings = sigil.lower().strip().split(" / ")
+        self.nb_cercles = len(cclstrings)
+        if self.nb_cercles > 3:
+            raise SigilTropGrandError(sigil, self.nb_cercles)
+        elif self.nb_cercles == 0:
+            raise SigilVideError
+        contrainte = ContraintePlace.AUCUNE
+        self.cercles = []
+        for c in cclstrings:
+            nv_cercle = Cercle(c, contrainte)
+            self.cercles.append(nv_cercle)
+            contrainte = nv_cercle.contrainte
+        self.sigil = sigil
