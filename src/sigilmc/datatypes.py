@@ -12,7 +12,7 @@ from sigilmc.exceptions import (
     StropheVideError,
 )
 
-ARCANUM_FILE_PATH = os.path.join(os.path.dirname(__file__), "../data/arcanums.json")
+ARCANUM_FILE_PATH = os.path.join(os.path.dirname(__file__), "data/arcanums.json")
 with open(ARCANUM_FILE_PATH) as arc:
     ARCANUMS = json.load(arc)
 

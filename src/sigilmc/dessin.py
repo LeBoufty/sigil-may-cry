@@ -6,7 +6,7 @@ import drawsvg as draw
 from sigilmc.datatypes import Arcanum, Cercle, ContraintePlace, Sigil, Strophe
 from sigilmc.exceptions import FormeInconnueError
 
-CERCLES_FILE_PATH = os.path.join(os.path.dirname(__file__), "../data/cercles.json")
+CERCLES_FILE_PATH = os.path.join(os.path.dirname(__file__), "data/cercles.json")
 with open(CERCLES_FILE_PATH) as f:
     AGENCEMENTS = json.load(f)["agencements"]
 
