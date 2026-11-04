@@ -41,7 +41,7 @@ Bonjour !
   - [ ] Force
   - [ ] Cycle perpétuel
 - Ergonomie :
-  - [ ] Outil CLI
+  - [x] Outil CLI
   - [ ] Méthode d'utilisation simple pour les non-initiés à python 😰😰😰
 - Fonctionnalités :
   - [ ] Options d'export
