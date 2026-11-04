@@ -221,3 +221,6 @@ __marimo__/
 
 # Output
 output/*.png
+sigil.png
+*.svg
+*.gif

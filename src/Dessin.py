@@ -1,5 +1,4 @@
 import json
-import logging
 
 import drawsvg as draw
 
@@ -8,9 +7,6 @@ from Exceptions import FormeInconnueError
 
 with open("src/cercles.json") as f:
     AGENCEMENTS = json.load(f)["agencements"]
-
-d = draw.Drawing(100, 100, origin="center")
-logger = logging.getLogger(__name__)
 
 ### FONCTIONS DE DESSIN DE FORMES DE BASE
 def draw_lines(coords:list[list], size: int,
@@ -122,18 +118,11 @@ def draw_sigil(sigil: Sigil, size: int) -> draw.Group:
         ccl_size = int(ccl_size - 0.3 * size)
     return g
 
-strophe = Strophe("sigil - augmenter - vitesse")
-cercleFeu = Cercle("eau - augmenter - chaleur ; terre - augmenter - chaleur ; air - augmenter - chaleur", ContraintePlace.AUCUNE)
-cercleLapis = Cercle("métal - diminuer - taille ; métal - augmenter - masse", ContraintePlace.AUCUNE)
-cercleLichen = Cercle("lichen - vers - mort", ContraintePlace.AUCUNE)
-
-sigilFeu = Sigil("3 * terre - augmenter - chaleur / 3 * air - augmenter - chaleur / 3 * eau - augmenter - chaleur")
-sigilLapis = Sigil("métal - augmenter - masse ; métal - diminuer - taille")
-sigilBrume = Sigil("3*liquide-augmenter-chaleur/2*air-augmenter-FROID;air-augmenter-taille")
-sigilSigil = Sigil("3 * sigil - diminuer - résistance / 3 * sigil - augmenter - vitesse")
-
-d.append(draw.Use(draw_strophe(strophe, 95, encercler=False, stroke_width=5), 0, 0))
-#d.append(draw.Use(draw_cercle(cercleLapis, 95, 95), 0, 0))
-#d.append(draw.Use(draw_sigil(sigilSigil, 100), 0, 0))
-d.set_pixel_scale(16)
-d.save_png("output/sigil.png")
+def dessin(sigil: str, strophe: bool, pixel_scale: int) -> draw.Drawing:
+    d = draw.Drawing(100, 100, origin="center")
+    if strophe:
+        d.append(draw.Use(draw_strophe(Strophe(sigil), 95, encercler=False), 0, 0))
+    else:
+        d.append(draw.Use(draw_sigil(Sigil(sigil), 100), 0 ,0))
+    d.set_pixel_scale(pixel_scale)
+    return d

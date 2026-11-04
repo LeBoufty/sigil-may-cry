@@ -30,3 +30,7 @@ class SigilVideError(Exception):
 class FormeInconnueError(Exception):
     def __init__(self, forme: str) -> None:
         super().__init__(f"Forme géométrique non-reconnue : {forme}")
+
+class FormatNonSupporteError(Exception):
+    def __init__(self, format: str) -> None:
+        super().__init__(f"Format de fichier non supporté : {format}, seuls .png, .svg et .gif sont acceptés.")
