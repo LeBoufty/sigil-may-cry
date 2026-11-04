@@ -35,7 +35,7 @@ pipx install sigilmc
 ## Options
 - `-i` : Transforme l'entrée d'une formule de sigil à un fichier. Par exemple : `sigilmc -i exemples/feu.sigil` génèrera le sigil contenu dans le fichier.
 - `-o FICHIER` : Enregistre le sigil dans le fichier défini. Formats supportés : .png, .svg et .gif
-- - `-s` : Active le mode Strophe qui permet de générer une strophe ou un arcanum seul, sans cercle, sur fond transparent.
+- `-s` : Active le mode Strophe qui permet de générer une strophe ou un arcanum seul, sans cercle, sur fond transparent.
 - `-p ÉCHELLE` : Définit l'échelle de pixels du rendu, plus elle est haute, plus le rendu est de haute qualité. (Défaut : 16)
 
 ## Syntaxe
