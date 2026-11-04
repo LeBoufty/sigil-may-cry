@@ -1,6 +1,6 @@
 [project]
 name = "sigilmc"
-version = "0.2.0"
+version = "0.2.1"
 description = "Dessinateur de sigils pour les Hermétistes pressés"
 readme = "README.md"
 license = { text = "MIT" }
@@ -29,3 +29,6 @@ sigilmc = "sigilmc.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+sigilmc = ["data/*.json"]
