@@ -20,6 +20,24 @@ Ce dépôt n'est pas destiné à ceux qui ne savent pas de quoi il parle, pour d
 
 Bonjour !
 
+## Installer
+
+### Via PIP
+```
+pip install sigilmc
+```
+
+### Via PIPX
+```
+pipx install sigilmc
+```
+
+## Options
+- `-i` : Transforme l'entrée d'une formule de sigil à un fichier. Par exemple : `sigilmc -i exemples/feu.sigil` génèrera le sigil contenu dans le fichier.
+- `-o FICHIER` : Enregistre le sigil dans le fichier défini. Formats supportés : .png, .svg et .gif
+- - `-s` : Active le mode Strophe qui permet de générer une strophe ou un arcanum seul, sans cercle, sur fond transparent.
+- `-p ÉCHELLE` : Définit l'échelle de pixels du rendu, plus elle est haute, plus le rendu est de haute qualité. (Défaut : 16)
+
 ## Syntaxe
 
 - Les arcanums d'une srophe sont séparés par un tiret (`-`)
@@ -30,7 +48,7 @@ Bonjour !
 ### Exemple
 
 ```
-3 * liquide - augmenter - chaleur / 2 * air - augmenter - froid ; air - augmenter - taille
+sigilmc "3 * liquide - augmenter - chaleur / 2 * air - augmenter - froid ; air - augmenter - taille"
 ```
 
 <img src="img/sigilBrume.png" height="300px"/>
@@ -42,9 +60,9 @@ Bonjour !
   - [ ] Cycle perpétuel
 - Ergonomie :
   - [x] Outil CLI
-  - [ ] Méthode d'utilisation simple pour les non-initiés à python 😰😰😰
+  - [x] Publication sur PyPi
 - Fonctionnalités :
-  - [ ] Options d'export
-  - [ ] Entrée par fichier
-    - [ ] Format de fichier compréhensible
+  - [x] Options d'export
+  - [x] Entrée par fichier
+    - [x] Format de fichier compréhensible
     - [ ] Possibilité de générer plusieurs sigils et de les exporter en masse
