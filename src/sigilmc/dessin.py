@@ -1,11 +1,13 @@
 import json
+import os
 
 import drawsvg as draw
 
-from Datatypes import Arcanum, Cercle, ContraintePlace, Sigil, Strophe
-from Exceptions import FormeInconnueError
+from sigilmc.datatypes import Arcanum, Cercle, ContraintePlace, Sigil, Strophe
+from sigilmc.exceptions import FormeInconnueError
 
-with open("src/cercles.json") as f:
+CERCLES_FILE_PATH = os.path.join(os.path.dirname(__file__), "../data/cercles.json")
+with open(CERCLES_FILE_PATH) as f:
     AGENCEMENTS = json.load(f)["agencements"]
 
 ### FONCTIONS DE DESSIN DE FORMES DE BASE

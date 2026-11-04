@@ -1,7 +1,8 @@
 import json
+import os
 from enum import Enum
 
-from Exceptions import (
+from sigilmc.exceptions import (
     ArcanumNotFoundError,
     CercleTropGrandError,
     CercleVideError,
@@ -11,7 +12,8 @@ from Exceptions import (
     StropheVideError,
 )
 
-with open("src/arcanums.json") as arc:
+ARCANUM_FILE_PATH = os.path.join(os.path.dirname(__file__), "../data/arcanums.json")
+with open(ARCANUM_FILE_PATH) as arc:
     ARCANUMS = json.load(arc)
 
 class Suite:

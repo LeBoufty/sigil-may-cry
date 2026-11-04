@@ -1,4 +1,4 @@
-from Datatypes import Cercle, ContraintePlace, Sigil, Strophe
+from sigilmc.datatypes import Cercle, ContraintePlace, Sigil, Strophe
 
 strophe = Strophe("sigil - augmenter - vitesse")
 cercleFeu = Cercle("eau - augmenter - chaleur ; terre - augmenter - chaleur ; air - augmenter - chaleur", ContraintePlace.AUCUNE)
