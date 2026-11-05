@@ -904,6 +904,43 @@
         "y": 0,
         "taille": 0.8
       }
+    },
+    "cycle perpétuel": {
+      "dessin": [
+        {
+          "type": "circle",
+          "x": 0,
+          "y": 0,
+          "r": 0.5,
+          "fill": "transparent"
+        },
+        {
+          "type": "circle",
+          "x": 0,
+          "y": 0,
+          "r": 0.3,
+          "fill": "transparent"
+        },
+        {
+          "type": "arc",
+          "x": -0.4,
+          "y": 0,
+          "r": 0.1,
+          "angles": [180, 0]
+        },
+        {
+          "type": "arc",
+          "x": 0.4,
+          "y": 0,
+          "r": 0.1,
+          "angles": [0, 180]
+        }
+      ],
+      "suite": {
+        "x": 0,
+        "y": 0,
+        "taille": 0.67
+      }
     }
   },
   "alias": {
@@ -918,6 +955,7 @@
     "fertilité": "végétal",
     "athanor": "lichen",
     "densité": "masse",
-    "séparer de": "diviser"
+    "séparer de": "diviser",
+    "cycle": "cycle perpétuel"
   }
 }
