@@ -55,9 +55,9 @@ sigilmc "3 * liquide - augmenter - chaleur / 2 * air - augmenter - froid ; air -
 
 ## À faire
 - Sigils : 
-  - [ ] Corps
-  - [ ] Force
-  - [ ] Cycle perpétuel
+  - [x] Corps
+  - [x] Force
+  - [x] Cycle perpétuel
 - Ergonomie :
   - [x] Outil CLI
   - [x] Publication sur PyPi
