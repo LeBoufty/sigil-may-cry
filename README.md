@@ -67,5 +67,5 @@ sigilmc "3 * liquide - augmenter - chaleur / 2 * air - augmenter - froid ; air -
     - [x] Format de fichier compréhensible
     - [ ] Possibilité de générer plusieurs sigils et de les exporter en masse
 - Graphisme :
-  - [ ] Adapter la taille des plus petits sigils
+  - [x] Adapter la taille des plus petits sigils
   - [ ] Se remonter les bretelles et faire un arcanum Cycle correct (ne sera jamais coché)

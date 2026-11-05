@@ -125,6 +125,8 @@ def dessin(sigil: str, strophe: bool, pixel_scale: int) -> draw.Drawing:
     if strophe:
         d.append(draw.Use(draw_strophe(Strophe(sigil), 95, encercler=False), 0, 0))
     else:
-        d.append(draw.Use(draw_sigil(Sigil(sigil), 100), 0 ,0))
+        sig = Sigil(sigil)
+        size = [0, 200, 130, 100][sig.nb_cercles]
+        d.append(draw.Use(draw_sigil(sig, size), 0 ,0))
     d.set_pixel_scale(pixel_scale)
     return d
