@@ -986,6 +986,7 @@
     "liquide": "eau",
     "chaleur": "feu",
     "immobilité": "terre",
+    "pierre": "terre",
     "vitesse": "air",
     "solidité": "résistance",
     "diminuer": "réduire",
@@ -993,6 +994,7 @@
     "athanor": "lichen",
     "densité": "masse",
     "séparer de": "diviser",
+    "séparer": "diviser",
     "cycle": "cycle perpétuel",
     "éternité": "cycle perpétuel"
   }
